@@ -1,0 +1,4 @@
+# Download the john the ripper jumbo (community-enhanced version)
+remi@localhost:~/$ wget http://www.openwall.com/john/j/john-1.8.0.tar.gz
+remi@localhost:~/$ tar -xzf john-1.8.0.tar.gz
+remi@localhost:~/$ cd john-1.8.0/src && make linux-x86-64
