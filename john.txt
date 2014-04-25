@@ -1,4 +1,5 @@
-# Download the john the ripper jumbo (community-enhanced version)
-remi@localhost:~/$ wget http://www.openwall.com/john/j/john-1.8.0.tar.gz
-remi@localhost:~/$ tar -xzf john-1.8.0.tar.gz
-remi@localhost:~/$ cd john-1.8.0/src && make linux-x86-64
+# Download john the ripper jumbo (community-enhanced version)
+remi@localhost:~/$ sudo apt-get install libssl-dev
+remi@localhost:~/$ wget http://www.openwall.com/john/g/john-1.7.9-jumbo-7.tar.gz
+remi@localhost:~/$ tar -xzf john-1.7.9-jumbo-7.tar.gz
+remi@localhost:~/$ cd john-1.7.9-jumbo/src && make linux-x86-64
