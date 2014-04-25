@@ -3,3 +3,54 @@ remi@localhost:~/$ sudo apt-get install libssl-dev
 remi@localhost:~/$ wget http://www.openwall.com/john/g/john-1.7.9-jumbo-7.tar.gz
 remi@localhost:~/$ tar -xzf john-1.7.9-jumbo-7.tar.gz
 remi@localhost:~/$ cd john-1.7.9-jumbo/src && make linux-x86-64
+
+# Get a list of all supported formats
+remi@localhost:~/john-1.7.9-jumbo/run$ ./john --list=subformats
+Format = dynamic_0   type = dynamic_0: md5($p) (raw-md5)
+Format = dynamic_1   type = dynamic_1: md5($p.$s) (joomla)
+Format = dynamic_2   type = dynamic_2: md5(md5($p)) (e107)
+Format = dynamic_3   type = dynamic_3: md5(md5(md5($p)))
+Format = dynamic_4   type = dynamic_4: md5($s.$p) (OSC)
+Format = dynamic_5   type = dynamic_5: md5($s.$p.$s)
+Format = dynamic_6   type = dynamic_6: md5(md5($p).$s)
+Format = dynamic_8   type = dynamic_8: md5(md5($s).$p)
+Format = dynamic_9   type = dynamic_9: md5($s.md5($p))
+Format = dynamic_10  type = dynamic_10: md5($s.md5($s.$p))
+Format = dynamic_11  type = dynamic_11: md5($s.md5($p.$s))
+Format = dynamic_12  type = dynamic_12: md5(md5($s).md5($p)) (IPB)
+Format = dynamic_13  type = dynamic_13: md5(md5($p).md5($s))
+Format = dynamic_14  type = dynamic_14: md5($s.md5($p).$s)
+Format = dynamic_15  type = dynamic_15: md5($u.md5($p).$s)
+Format = dynamic_16  type = dynamic_16: md5(md5(md5($p).$s).$s2)
+Format = dynamic_17  type = dynamic_17: phpass ($P$ or $H$)
+Format = dynamic_18  type = dynamic_18: md5($s.Y.$p.0xF7.$s)(Post.Office MD5)
+Format = dynamic_19  type = dynamic_19: Cisco PIX (MD5)
+Format = dynamic_20  type = dynamic_20: Cisco PIX (MD5 salted)
+Format = dynamic_21  type = dynamic_21: HTTP Digest Access Auth
+Format = dynamic_22  type = dynamic_22: md5(sha1($p))
+Format = dynamic_23  type = dynamic_23: sha1(md5($p))
+Format = dynamic_24  type = dynamic_24: sha1($p.$s)
+Format = dynamic_25  type = dynamic_25: sha1($s.$p)
+Format = dynamic_26  type = dynamic_26: sha1($p) raw-sha1
+Format = dynamic_27  type = dynamic_27: FreeBSD MD5
+Format = dynamic_28  type = dynamic_28: Apache MD5
+Format = dynamic_29  type = dynamic_29: md5(unicode($p))
+Format = dynamic_30  type = dynamic_30: md4($p) (raw-md4)
+Format = dynamic_31  type = dynamic_31: md4($s.$p)
+Format = dynamic_32  type = dynamic_32: md4($p.$s)
+Format = dynamic_33  type = dynamic_33: md4(unicode($p))
+Format = dynamic_34  type = dynamic_34: md5(md4($p))
+Format = dynamic_35  type = dynamic_35: sha1(uc($u).:.$p) (ManGOS)
+Format = dynamic_36  type = dynamic_36: sha1($u.:.$p) (ManGOS2)
+Format = dynamic_37  type = dynamic_37: sha1(lc($u).$p) (SMF)
+Format = dynamic_38  type = dynamic_38: sha1($s.sha1($s.($p))) (Wolt3BB)
+UserFormat = dynamic_1001  type = dynamic_1001: md5(md5(md5(md5($p))))
+UserFormat = dynamic_1002  type = dynamic_1002: md5(md5(md5(md5(md5($p)))))
+UserFormat = dynamic_1003  type = dynamic_1003: md5(md5($p).md5($p))
+UserFormat = dynamic_1004  type = dynamic_1004: md5(md5(md5(md5(md5(md5($p))))))
+UserFormat = dynamic_1005  type = dynamic_1005: md5(md5(md5(md5(md5(md5(md5($p)))))))
+UserFormat = dynamic_1006  type = dynamic_1006: md5(md5(md5(md5(md5(md5(md5(md5($p))))))))
+UserFormat = dynamic_1007  type = dynamic_1007: md5(md5($p).$s) (vBulletin)
+UserFormat = dynamic_1008  type = dynamic_1008: md5($p.$s) (RADIUS User-Password)
+UserFormat = dynamic_1009  type = dynamic_1009: md5($s.$p) (RADIUS Responses)
+UserFormat = dynamic_1010  type = dynamic_1010: md5($p null_padded_to_len_100) RAdmin v2.x MD5
