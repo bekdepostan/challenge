@@ -54,3 +54,13 @@ UserFormat = dynamic_1007  type = dynamic_1007: md5(md5($p).$s) (vBulletin)
 UserFormat = dynamic_1008  type = dynamic_1008: md5($p.$s) (RADIUS User-Password)
 UserFormat = dynamic_1009  type = dynamic_1009: md5($s.$p) (RADIUS Responses)
 UserFormat = dynamic_1010  type = dynamic_1010: md5($p null_padded_to_len_100) RAdmin v2.x MD5
+
+# The plain text password of the user is hashed with the MD5 functions (a salt is post-append)
+# The value of the salt is known ("8409") as well as the hashed password ("76b1bc66af836527b57e7963c9334771$8409")
+# md5("plain_text_password" + "8409") = 76b1bc66af836527b57e7963c9334771
+# We want to retreive the value of the plain text password
+
+remi@localhost:~/john-1.7.9-jumbo/run$ echo "admin:$dynamic_1$76b1bc66af836527b57e7963c9334771$8409" > hash.txt
+remi@localhost:~/john-1.7.9-jumbo/run$ ./john hash.txt
+Loaded 1 password hash (dynamic_1: md5($p.$s) (joomla) [128/128 SSE2 intrinsics 10x4x3
+
