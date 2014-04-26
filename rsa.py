@@ -27,7 +27,7 @@ if __name__ == "__main__":
     # Totient
     t = (p - 1) * (q - 1)
 
-    # modulo
+    # Modulus
     e = 65537
 
     # n is used as the modulus for both the public and private keys
