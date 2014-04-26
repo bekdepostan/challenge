@@ -38,16 +38,23 @@ if __name__ == "__main__":
 
     d = modinv(e, t)
 
-    print 'ciphered message is ' +  str(c)
+    print 'Ciphered message is ' +  str(c)
 
     print 'Computing ' + str(c) + ' ^ ' + str(d) + ' mod ' + str(n)
 
     m = pow(c, d, n)
 
-    print 'orginal message (int)' + str(m)
+    print 'Orginal message (int)' + str(m)
     
     # Wikipedia example for factoring
+    # p = 61
+    # q = 53
+    # e = 17
+    # n = p * q
+    # t = (p - 1) * (q - 1)
+    # d = modinv(e, t)
     # m = 65
+
     # print 'orginal message ' + str(m)
 
     # c = pow(m, e, n)
