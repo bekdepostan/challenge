@@ -42,7 +42,16 @@ if __name__ == "__main__":
 
     print 'Computing ' + str(c) + ' ^ ' + str(d) + ' mod ' + str(n)
 
-    m = pow(c, d) % n
+    m = pow(c, d, n)
 
     print 'orginal message (int)' + str(m)
-    print 'original message (str)' + str(m).decode("hex")
+    
+    # Wikipedia example for factoring
+    # m = 65
+    # print 'orginal message ' + str(m)
+
+    # c = pow(m, e, n)
+    # print 'ciphered message ' +  str(c)
+
+    # m = pow(c, d, n)
+    # print 'deciphered message = ' + str(m)
