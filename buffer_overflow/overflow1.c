@@ -26,7 +26,6 @@
 ** 0xffffd5c4: 0x41414141
 ** 0xffffd5c0: 0x41414141
 ** 0xffffd5bc: 0x41414141 (beginning of buffer)
-
 */
 
 #include <stdio.h>
