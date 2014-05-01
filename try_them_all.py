@@ -22,4 +22,4 @@ if __name__ == "__main__":
             sys.exit(0)
 
     f.close()
-    print '[FAILURE] Can not find plain text password for the hash ' + hashed_password + ' with salt ' + salt
+    print '[FAIL] Can not find plain text password for the hash ' + hashed_password + ' with salt ' + salt
