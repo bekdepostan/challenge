@@ -1,4 +1,4 @@
-/*** 
+/*
 ** Solution
 ** user4320@shell:/problems/format_1_d407f39cdf584627$ gdb format1
 ** (gdb) print &x
