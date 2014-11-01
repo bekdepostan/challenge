@@ -7,22 +7,22 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-/* This never gets called! */
-void give_shell(){
+int token = 0;
+
+typedef void (*function_ptr)();
+
+void be_nice_to_people(){
     gid_t gid = getegid();
     setresgid(gid, gid, gid);
-    system("/bin/sh -i");
-}
-
-void vuln(char *input){
-    char buf[16];
-    strcpy(buf, input);
 }
 
 int main(int argc, char **argv){
-    if (argc > 1)
-        vuln(argv[1]);
-    return 0;
+    char buf[128];
+
+    be_nice_to_people();
+
+    read(0, buf, 128);
+
+    ((function_ptr)buf)();
 }
