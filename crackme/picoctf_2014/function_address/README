@@ -1,0 +1,6 @@
+Problem:
+We found this program file on some systems. But we need the address of the 'find_string' function to do anything useful! Can you find it for us? 
+
+Solution:
+objdump -M intel -d problem |grep find_string
+08048444 <find_string>:
