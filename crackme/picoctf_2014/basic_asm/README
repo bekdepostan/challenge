@@ -1,0 +1,31 @@
+Problem:
+We found this program snippet.txt, but we're having some trouble figuring it out. What's the value of %eax when the last instruction (the NOP) runs? 
+
+Solution:
+# Compile the AT&T syntax x86 ASM file
+user@debian:~/$ gcc -m32 snippet.S -o snippet
+
+# Start the binary with gdb
+user@debian:~/$ gdb -q --args ./snippet 
+Reading symbols from ./snippet...(no debugging symbols found)...done.
+(gdb) b L3
+Breakpoint 1 at 0x8048414
+(gdb) r
+Starting program: /home/jullia_r/Devel/github/challenge/crackme/picoctf_2014/basic_asm/snippet 
+
+Breakpoint 1, 0x08048414 in L3 ()
+(gdb) disass
+Dump of assembler code for function L3:
+=> 0x08048414 <+0>:	nop
+   0x08048415 <+1>:	xchg   ax,ax
+   0x08048417 <+3>:	xchg   ax,ax
+   0x08048419 <+5>:	xchg   ax,ax
+   0x0804841b <+7>:	xchg   ax,ax
+   0x0804841d <+9>:	xchg   ax,ax
+   0x0804841f <+11>:	nop
+End of assembler dump.
+(gdb) p $eax
+$1 = 378262151
+(gdb) 
+
+# Well eax = 378262151
