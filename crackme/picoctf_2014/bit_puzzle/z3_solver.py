@@ -1,9 +1,3 @@
-# Actually the hint section for this challenge says: 
-# USE CONSTRAIT SOLVER
-# So while my poor CPU was burning compiling z3, I wrote this little python script
-# This nice tutorial helped me for playing with z3. 
-# http://cpl0.net/~argp/papers/z3py-guide.pdf
-
 import sys
 from z3 import Solver, BitVec
 
